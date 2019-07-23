@@ -1,0 +1,317 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>OC对象本质一 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="OC对象本质二.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    OC对象的本质
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.2.1" data-path="OC对象本质一.html">
+            
+                <a href="OC对象本质一.html">
+            
+                    
+                    OC对象本质一
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="OC对象本质二.html">
+            
+                <a href="OC对象本质二.html">
+            
+                    
+                    OC对象本质二
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >OC对象本质一</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="oc&#x5BF9;&#x8C61;&#x672C;&#x8D28;&#x4E00;">OC&#x5BF9;&#x8C61;&#x672C;&#x8D28;(&#x4E00;)</h1>
+<blockquote>
+<p>&#x4E00;&#x4E2A;NSObject&#x5BF9;&#x8C61;&#x5360;&#x7528;&#x591A;&#x5C11;&#x5185;&#x5B58;&#xFF1F;</p>
+</blockquote>
+<pre><code>NSObject * obj = [[NSObject alloc]init];
+</code></pre><p>&#x53EF;&#x4EE5;&#x770B;&#x505A;&#x662F;&#x518D;&#x95EE;obj&#x6307;&#x9488;&#x6307;&#x5411;&#x7684;&#x5185;&#x5B58;&#x533A;&#x57DF;&#x6709;&#x591A;&#x5927;</p>
+<h2 id="object-c&#x7684;&#x672C;&#x8D28;">Object-C&#x7684;&#x672C;&#x8D28;</h2>
+<p>Object-C&#x5E95;&#x5C42;&#x5B9E;&#x73B0;&#x5176;&#x5B9E;&#x90FD;&#x662F;C/C++&#x4EE3;&#x7801;&#xFF0C;&#x6240;&#x4EE5;Object-C&#x7684;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x90FD;&#x662F;&#x57FA;&#x4E8E;C/C++&#x7684;&#x7ED3;&#x6784;&#x4F53;&#x5B9E;&#x73B0;&#x7684;&#x3002;</p>
+<pre><code>Object-C -&gt; C -&gt; C++ -&gt; &#x6C47;&#x7F16;&#x8BED;&#x8A00; -&gt; &#x673A;&#x5668;&#x8BED;&#x8A00;
+</code></pre><p>&#x5C06;Object-C&#x8F6C;&#x5316;&#x4E3A;C/C++</p>
+<pre><code>xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m -o main.cpp
+</code></pre><ol>
+<li>iphoneos&#xFF1A;&#x5E73;&#x53F0;</li>
+<li>arm64 : arm32/arm64</li>
+<li>main.m &#xFF1A;&#x9700;&#x8981;&#x8F6C;&#x5316;&#x7684;&#x6587;&#x4EF6;&#x540D;</li>
+<li>main.cpp:&#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x540D;</li>
+<li>Nobject&#x5185;&#x5B58;&#x672C;&#x8D28;</li>
+</ol>
+<p>&#x521B;&#x5EFA;Demo&#x5DE5;&#x7A0B;&#xFF0C;&#x4FEE;&#x6539;main.m&#x6587;&#x4EF6;,&#x521B;&#x5EFA;NSObject&#x5BF9;&#x8C61;&#xFF0C;&#x7136;&#x540E;&#x524D;&#x5F80;main.m&#x6587;&#x4EF6;&#x6240;&#x5728;&#x76EE;&#x5F55;&#xFF0C;&#x6267;&#x884C;&#x8F6C;&#x6362;&#x547D;&#x4EE4;</p>
+<pre><code>
+int main(int argc, char * argv[]) {
+    @autoreleasepool {
+       NSObject * obj = [[NSObject alloc]init];        
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+    }
+}
+</code></pre><p>&#x6267;&#x884C;&#x5B8C;&#x6210;&#x540E;&#x751F;&#x6210;main.cpp&#x6587;&#x4EF6;&#xFF0C;&#x6253;&#x5F00;main.cpp&#x6587;&#x4EF6;&#xFF0C;&#x641C;&#x7D22;NSObject,&#x4F1A;&#x770B;&#x5230;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code>&#x4EE3;&#x7801;1
+
+struct NSObject_IMPL {
+    Class isa;
+};
+</code></pre><p>&#x8FD9;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x5C31;&#x662F;NSObject&#x5BF9;&#x8C61;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x672C;&#x8D28;</p>
+<pre><code>&#x4EE3;&#x7801;2
+
+struct NSEnumerator_IMPL {
+    struct NSObject_IMPL NSObject_IVARS;
+};
+</code></pre><p>&#x8FD9;&#x548C;C++&#x6E90;&#x7801;&#x4E2D;&#x7684;&#x7ED3;&#x6784;&#x4F53;&#x6781;&#x4E3A;&#x76F8;&#x4F3C;&#xFF0C;&#x4E5F;&#x8BC1;&#x5B9E;&#x4E86;NSObject&#x5BF9;&#x8C61;&#x7684;&#x672C;&#x8D28;&#x5C31;&#x662F;&#x4E00;&#x4E2A;C++&#x7ED3;&#x6784;&#x4F53;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: OC对象的本质">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="OC对象本质二.html" class="navigation navigation-next " aria-label="Next page: OC对象本质二">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"OC对象本质一","level":"1.2.1","depth":2,"next":{"title":"OC对象本质二","level":"1.2.2","depth":2,"path":"OC对象本质/OC对象本质二.md","ref":"OC对象本质/OC对象本质二.md","articles":[]},"previous":{"title":"OC对象的本质","level":"1.2","depth":1,"path":"OC对象本质/README.md","ref":"OC对象本质/README.md","articles":[{"title":"OC对象本质一","level":"1.2.1","depth":2,"path":"OC对象本质/OC对象本质一.md","ref":"OC对象本质/OC对象本质一.md","articles":[]},{"title":"OC对象本质二","level":"1.2.2","depth":2,"path":"OC对象本质/OC对象本质二.md","ref":"OC对象本质/OC对象本质二.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"OC对象本质/OC对象本质一.md","mtime":"2019-07-23T08:47:15.640Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-23T08:44:37.973Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
